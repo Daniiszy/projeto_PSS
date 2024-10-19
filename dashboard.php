@@ -2,14 +2,12 @@
 // Inicia uma sessão ou retoma uma sessão existente
 session_start();
 
-// Verifica se o usuário já está autenticado, verificando a variável de sessão 'username'
+// Verifica se o utilizador já está autenticado, verificando a variável de sessão 'username'
 if (!isset($_SESSION['username'])) {
 
-    // Se 'username' não está definido na sessão, redireciona o usuário para 'index.php' após 5 segundos
-    header("refresh:5;url=index.php");
-
-    // Exibe uma mensagem de "Acesso Restrito" e termina a execução do script
-    die("Acesso Restrito");
+    // Se 'username' não está definido na sessão, redireciona o usuário para a página de acesso restrito
+    header("Location: acesso_restrito.php");
+    exit();
 }
 
 $valor_temperatura = file_get_contents("api/files/temperatura/valor.txt");
@@ -143,11 +141,39 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
                             <td>2024/03/10 14:31</td>
                             <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
                         </tr>
+                        
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <p>
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-section">
+                    <h5>Sobre Nós</h5>
+                    <p>FocoenSec é uma plataforma de vigilância inteligente que oferece monitoramento em tempo real.</p>
+                </div>
+                <div class="col-md-4 footer-section">
+                    <h5>Redes Sociais</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 footer-section">
+                    <h5>Contato</h5>
+                    <p>Email: suporte@focoensec.com</p>
+                    <p>Telefone: +351 123 456 789</p>
+                </div>
+            </div>
+            <div class="text-center py-3">
+                <small>&copy; 2024 FocoenSec. Todos os direitos reservados.</small>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
