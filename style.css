@@ -14,18 +14,7 @@
 
 }
 
-/* Estilo para o layout geral do site */
-body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
 
-/* O main ocupa todo o espaço disponível para empurrar o footer para baixo */
-main {
-    flex: 1;
-}
 
 /* Estilos para o footer */
 .footer {
