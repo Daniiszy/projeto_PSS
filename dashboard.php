@@ -55,7 +55,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
 
     <div class="container d-flex justify-content-around align-items-center">
         <div id="title-header">
-            <h1>Servidor IoT</h1>
+            <h1>Serviço de Vigilância Inteligente</h1>
             <h6> <strong>User:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></h6>
         </div>
         <img src="imagens/estg.png" width="300px" alt="Imagem da Estg">
