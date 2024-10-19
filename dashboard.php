@@ -29,6 +29,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
 </head>
 
 <body>
+    
    <!--<h6> <?php // echo  $nome_temperatura . " : " . $valor_temperatura . " em " . $hora_temperatura; ?></h6> -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -50,10 +51,10 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
             </div>
         </div>
     </nav>
-
+    <div class="secao-com-fundo">
     <div class="container d-flex justify-content-around align-items-center">
         <div id="title-header">
-            <h1>Serviço de Vigilância Inteligente</h1>
+            <h1 class= "letras_Projeto">Serviço de Vigilância Inteligente</h1>
             <h6> <strong>User:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></h6>
         </div>
         <img src="imagens/estg.png" width="300px" alt="Imagem da Estg">
@@ -147,7 +148,8 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
             </div>
         </div>
     </div>
-    <p>
+    </div>
+    
     <footer class="footer bg-dark text-white py-4">
         <div class="container">
             <div class="row">

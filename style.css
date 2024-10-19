@@ -70,3 +70,16 @@
     font-weight: bold;
     color: #f8f9fa;
 }
+.secao-com-fundo {
+    background-image: 
+        linear-gradient(rgba(126, 187, 102, 0.212), rgba(126, 123, 119, 0.5)),
+        url('imagens/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    color: #fff; /* Cor do texto para contrastar com o fundo */
+}
+.letras_Projeto{
+    font-family: 'Times New Roman';
+}
