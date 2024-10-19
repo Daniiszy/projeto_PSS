@@ -2,14 +2,12 @@
 // Inicia uma sessão ou retoma uma sessão existente
 session_start();
 
-// Verifica se o usuário já está autenticado, verificando a variável de sessão 'username'
+// Verifica se o utilizador já está autenticado, verificando a variável de sessão 'username'
 if (!isset($_SESSION['username'])) {
 
-    // Se 'username' não está definido na sessão, redireciona o usuário para 'index.php' após 5 segundos
-    header("refresh:5;url=index.php");
-
-    // Exibe uma mensagem de "Acesso Restrito" e termina a execução do script
-    die("Acesso Restrito");
+    // Se 'username' não está definido na sessão, redireciona o usuário para a página de acesso restrito
+    header("Location: acesso_restrito.php");
+    exit();
 }
 
 $valor_temperatura = file_get_contents("api/files/temperatura/valor.txt");
