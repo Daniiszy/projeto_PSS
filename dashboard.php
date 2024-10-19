@@ -112,7 +112,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h5><strong></strong></h5>
+                <h5><strong>Tabela de Sensores</strong></h5>
             </div>
             <div class="card-body">
                 <table class="table">
