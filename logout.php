@@ -3,7 +3,7 @@
 
     session_destroy();
 
-    sleep(5);
+    sleep(3);
     
     header("Location: index.php");
     exit();
