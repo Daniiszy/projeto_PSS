@@ -8,45 +8,42 @@
     }
 */
 
-    session_start();
-    
-    $username = "daniel"; 
-    $username = "admin"; 
-    $username = "miguel";
+session_start();
 
-    $hashes_utilizadores = [
+$username = "daniel";
+$username = "admin";
+$username = "miguel";
 
+$hashes_utilizadores = [];
 
-    ];
+$password_hash_daniel = '$2y$10$hU2F9ReDlYB2Kt5uaMhzVO8NQSmV0HrNVUgQcqPySrKMrWYqQm9Sm';
+$password_hash_admin = '$2y$10$U/PE9zgYIAZe8bQh9TNd5.jYc5e4u0gQ1xl4.7wNsCPXHUlMViOkS';
+$password_hash_miguel = '$2y$10$WLY2TyDlfNar8QONA3wrG.nbMdru4a19m7RXUAvNqwyo3C3rtzWYi';
 
-    $password_hash_daniel = '$2y$10$hU2F9ReDlYB2Kt5uaMhzVO8NQSmV0HrNVUgQcqPySrKMrWYqQm9Sm';
-    $password_hash_admin = '$2y$10$U/PE9zgYIAZe8bQh9TNd5.jYc5e4u0gQ1xl4.7wNsCPXHUlMViOkS';
-    $password_hash_miguel = '$2y$10$WLY2TyDlfNar8QONA3wrG.nbMdru4a19m7RXUAvNqwyo3C3rtzWYi';
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-    
-        // Verificação de autenticação
-        if ($username === "admin" && password_verify($password, $password_hash_admin)) {
-            $_SESSION['username'] = $username; // Armazena o username na sessão
-            header("Location: dashboard.php"); // Redireciona para o dashboard
-            exit(); // Saia após o redirecionamento
-        } 
-        if ($username === "daniel" && password_verify($password, $password_hash_daniel)) {
-            $_SESSION['username'] = $username; // Armazena o username na sessão
-            header("Location: dashboard.php"); // Redireciona para o dashboard
-            exit(); // Saia após o redirecionamento
-        } 
-        if ($username === "miguel" && password_verify($password, $password_hash_miguel)) {
-            $_SESSION['username'] = $username; // Armazena o username na sessão
-            header("Location: dashboard.php"); // Redireciona para o dashboard
-            exit(); // Saia após o redirecionamento
-        } 
-        
-        // Se nenhuma das condições acima for verdadeira, exibe uma mensagem de erro
-        echo "Autenticação falhou! Username ou senha incorretos.";
+    // Verificação de autenticação
+    if ($username === "admin" && password_verify($password, $password_hash_admin)) {
+        $_SESSION['username'] = $username; // Armazena o username na sessão
+        header("Location: dashboard.php"); // Redireciona para o dashboard
+        exit(); // Saia após o redirecionamento
     }
+    if ($username === "daniel" && password_verify($password, $password_hash_daniel)) {
+        $_SESSION['username'] = $username; // Armazena o username na sessão
+        header("Location: dashboard.php"); // Redireciona para o dashboard
+        exit(); // Saia após o redirecionamento
+    }
+    if ($username === "miguel" && password_verify($password, $password_hash_miguel)) {
+        $_SESSION['username'] = $username; // Armazena o username na sessão
+        header("Location: dashboard.php"); // Redireciona para o dashboard
+        exit(); // Saia após o redirecionamento
+    }
+
+    // Se nenhuma das condições acima for verdadeira, exibe uma mensagem de erro
+    $error_message = "Autenticação falhou! Username ou senha incorretos.";
+}
 ?>
 
 <!doctype html>
@@ -76,6 +73,14 @@
         <div class="row justify-content-center">
             <form class="AulaForm" method="post">
                 <a href="index.php"><img src="estg_h.png" alt="Logotipo"></a>
+
+                <?php if (!empty($error_message)): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $error_message; ?>
+                    </div>
+                <?php endif; ?>
+
+
                 <div class="mb-3">
                     <label for="exampleInputUsername1" class="form-label">Username</label>
                     <input name="username" placeholder="Insira o seu username" type="text" class="form-control" id="exampleInputEmail1">
