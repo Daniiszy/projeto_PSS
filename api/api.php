@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         print_r($_POST);
 
         // Salva o valor do campo 'nome' em um arquivo nome.txt dentro de uma pasta com o nome do valor do campo 'nome'
-        file_put_contents("files/".$_POST['nome']."/nome.txt", $_POST['nome']);
+        file_put_contents("files/temperatura".$_POST['nome']."/nome.txt", $_POST['nome']);
         // Salva o valor do campo 'valor' em um arquivo valor.txt dentro de uma pasta com o nome do valor do campo 'nome'
         file_put_contents("files/".$_POST['nome']."/valor.txt", $_POST['valor']);
         // Salva o valor do campo 'hora' em um arquivo hora.txt dentro de uma pasta com o nome do valor do campo 'nome'

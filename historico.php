@@ -20,7 +20,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5"> <!-- Atualiza a página a cada 5 segundos -->
+    <meta http-equiv="refresh" content="5">
     <title>Histórico de Leituras</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">

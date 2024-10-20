@@ -13,6 +13,9 @@ $valor_temperatura = file_get_contents("api/files/temperatura/valor.txt");
 $hora_temperatura = file_get_contents("api/files/temperatura/hora.txt");
 $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
 
+// Lê o conteúdo do log.txt
+$logFile = "api/files/temperatura"."/log.txt"; // Ajuste o caminho se necessário
+$historico = file($logFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5"> <!-- Atualiza a página a cada 5 segundos -->
+    <meta http-equiv="refresh" content="5"> 
     <title>Histórico de Temperatura</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
@@ -66,9 +69,9 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo $nome_temperatura; ?></td>
-                            <td><?php echo $valor_temperatura; ?> °C</td>
-                            <td><?php echo $hora_temperatura; ?></td>
+                            <td><?php echo htmlspecialchars($nome_temperatura); ?></td>
+                            <td><?php echo htmlspecialchars($valor_temperatura); ?> °C</td>
+                            <td><?php echo htmlspecialchars($hora_temperatura); ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -80,30 +83,34 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
                 <strong>Histórico de Leituras</strong>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Hora de Atualização</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Aqui você pode adicionar várias leituras de histórico, se estiver armazenando em um banco de dados ou arquivo -->
-                        <tr>
-                            <td>25.0 °C</td>
-                            <td>2024/03/10 14:30</td>
-                        </tr>
-                        <tr>
-                            <td>24.8 °C</td>
-                            <td>2024/03/10 14:25</td>
-                        </tr>
-                        <tr>
-                            <td>24.5 °C</td>
-                            <td>2024/03/10 14:20</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Hora de Atualização</th>
+                <th scope="col">Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Percorre cada linha do histórico e adiciona à tabela
+            foreach ($historico as $linha) {
+                // Divide a linha em hora e valor, removendo espaços em branco
+                $dados = explode(';', trim($linha));
+
+                // Verifica se a linha contém exatamente 2 elementos
+                if (count($dados) == 2) {
+                    $hora = htmlspecialchars($dados[0]); // A primeira parte é a hora
+                    $valor = htmlspecialchars($dados[1]); // A segunda parte é o valor
+                    echo "<tr>";
+                    echo "<td>{$hora}</td>";
+                    echo "<td>{$valor} °C</td>";
+                    echo "</tr>";
+                }
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
         </div>
 
     </div>
