@@ -29,7 +29,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
 </head>
 
 <body>
-   <!--<h6> <?php // echo  $nome_temperatura . " : " . $valor_temperatura . " em " . $hora_temperatura; ?></h6> -->
+    <!--<h6> <?php // echo  $nome_temperatura . " : " . $valor_temperatura . " em " . $hora_temperatura; ?></h6> -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">FocoenSec</a>
@@ -50,104 +50,162 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
             </div>
         </div>
     </nav>
-
-    <div class="container d-flex justify-content-around align-items-center">
-        <div id="title-header">
-            <h1>Serviço de Vigilância Inteligente</h1>
-            <h6> <strong>User:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></h6>
+    <div class="secao-com-fundo">
+        <div class="container d-flex justify-content-around align-items-center">
+            <div id="title-header">
+                <h1 class="letras_Projeto">Serviço de Vigilância Inteligente</h1>
+                <h6> <strong>User:</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></h6>
+            </div>
+            <img src="imagens/estg.png" width="300" alt="Imagem da Estg">
         </div>
-        <img src="imagens/estg.png" width="300px" alt="Imagem da Estg">
-    </div>
 
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header sensor">
-                        <strong>Temperatura: <?php echo $valor_temperatura; ?></strong>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <div class="card-header sensor">
+                            <strong>Temperatura: <?php echo $valor_temperatura; ?></strong>
+                        </div>
+                        <div class="card-body">
+                            <img src="imagens/temperature-high.png" alt="Imagem de temperatura alta">
+                        </div>
+                        <div class="card-footer">
+                            <h5><strong>Atualização:</strong> <?php echo $hora_temperatura; ?> - <a href="#">Histórico</a></h5>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <img src="imagens/temperature-high.png" alt="Imagem de temperatura alta">
+                </div>
+
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <div class="card-header sensor">
+                            <strong>Humidade 70%</strong>
+                        </div>
+                        <div class="card-body">
+                            <img src="imagens/humidity-high.png" alt="Imagem de temperatura alta">
+                        </div>
+                        <div class="card-footer">
+                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <h5><strong>Atualização:</strong> <?php echo $hora_temperatura; ?> - <a href="#">Histórico</a> </h5>
+                </div>
+
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <div class="card-header sensor">
+                            <strong>Humidade 70%</strong>
+                        </div>
+                        <div class="card-body">
+                            <img src="imagens/humidity-high.png" alt="Imagem de temperatura alta">
+                        </div>
+                        <div class="card-footer">
+                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <div class="card-header atuador">
+                            <strong>Led Arduino: Ligado</strong>
+                        </div>
+                        <div class="card-body">
+                            <img src="imagens/light-on.png" alt="Imagem de temperatura alta">
+                        </div>
+                        <div class="card-footer">
+                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <div class="card-header atuador">
+                            <strong>Led Arduino: Ligado</strong>
+                        </div>
+                        <div class="card-body">
+                            <img src="imagens/light-on.png" alt="Imagem de temperatura alta">
+                        </div>
+                        <div class="card-footer">
+                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 mb-4">
+                    <div class="card">
+                        <div class="card-header atuador">
+                            <strong>Led Arduino: Ligado</strong>
+                        </div>
+                        <div class="card-body">
+                            <img src="imagens/light-on.png" alt="Imagem de temperatura alta">
+                        </div>
+                        <div class="card-footer">
+                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header sensor">
-                        <strong>Humidade 70%</strong>
-                    </div>
-                    <div class="card-body">
-                        <img src="imagens/humidity-high.png" alt="Imagem de temperatura alta">
-                    </div>
-                    <div class="card-footer">
-                        <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a> </h5>
-                    </div>
+        <div class="container" class="card-body table-responsive">
+            <div class="card">
+                <div class="card-header">
+                    <h5><strong>Tabela de Sensores</strong></h5>
                 </div>
-            </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tipo de Dispositivos IoT</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Data de Atualização</th>
+                                <th scope="col">Estado Alertas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row"><?php echo $nome_temperatura; ?></td>
+                                <td><?php echo $valor_temperatura; ?></td>
+                                <td><?php echo $hora_temperatura; ?></td>
+                                <td><span class="badge rounded-pill text-bg-danger">Elevada</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Humidade</td>
+                                <td>70%</td>
+                                <td>2024/03/10 14:31</td>
+                                <td><span class="badge rounded-pill text-bg-primary">Normal</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Led Arduino</td>
+                                <td>Ligado</td>
+                                <td>2024/03/10 14:31</td>
+                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Led Arduino</td>
+                                <td>Ligado</td>
+                                <td>2024/03/10 14:31</td>
+                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Led Arduino</td>
+                                <td>Ligado</td>
+                                <td>2024/03/10 14:31</td>
+                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">Led Arduino</td>
+                                <td>Ligado</td>
+                                <td>2024/03/10 14:31</td>
+                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
 
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header atuador">
-                        <strong>Led Arduino: Ligado</strong>
-                    </div>
-                    <div class="card-body">
-                        <img src="imagens/light-on.png" alt="Imagem de temperatura alta">
-                    </div>
-                    <div class="card-footer">
-                        <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a> </h5>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-
-    <p></p>
-
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h5><strong>Tabela de Sensores</strong></h5>
-            </div>
-            <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Tipo de Dispositivos IoT</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Data de Atualização</th>
-                            <th scope="col">Estado Alertas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row"><?php echo $nome_temperatura; ?></td>
-                            <td><?php echo $valor_temperatura; ?></td>
-                            <td><?php echo $hora_temperatura; ?></td>
-                            <td><span class="badge rounded-pill text-bg-danger">Elevada</span></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Humidade</td>
-                            <td>70%</td>
-                            <td>2024/03/10 14:31</td>
-                            <td><span class="badge rounded-pill text-bg-primary">Normal</span></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">Led Arduino</td>
-                            <td>Ligado</td>
-                            <td>2024/03/10 14:31</td>
-                            <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <p>
     <footer class="footer bg-dark text-white py-4">
         <div class="container">
             <div class="row">
