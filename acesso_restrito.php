@@ -34,7 +34,7 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="access-denied">
+    <div class="alert-box">
         <h1>Acesso Restrito</h1>
         <p>Não tem permissão para aceder a esta página.</p>
         <p class="timer">Será redirecionado para a página inicial em 5 segundos. <br>Se não for, <a href="index.php">clique aqui</a>.</p>
