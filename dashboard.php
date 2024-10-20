@@ -42,7 +42,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Histórico</a>
+                        <a class="nav-link" href="historico.php">Histórico</a>
                 </ul>
                 <form action="logout.php" method="get">
                     <button name="logout" class="btn btn-outline-secondary" type="submit">Logout</button>
@@ -64,13 +64,13 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header sensor">
-                            <strong>Temperatura: <?php echo $valor_temperatura; ?></strong>
+                            <strong>Temperatura: <?php echo $valor_temperatura; ?>º</strong>
                         </div>
                         <div class="card-body">
                             <img src="imagens/temperature-high.png" alt="Imagem de temperatura alta">
                         </div>
                         <div class="card-footer">
-                            <h5><strong>Atualização:</strong> <?php echo $hora_temperatura; ?> - <a href="#">Histórico</a></h5>
+                            <h5><strong>Atualização:</strong> <?php echo $hora_temperatura; ?> - <a href="historico_temperatura.php">Histórico</a></h5>
                         </div>
                     </div>
                 </div>
