@@ -14,12 +14,15 @@
             height: 100vh;
             margin: 0;
         }
-        
+    
+        h1 {
+            color: #d9534f;
+        }
         p {
             font-size: 18px;
             color: #333;
         }
-    
+        
         a {
             color: #428bca;
             text-decoration: none;
@@ -28,18 +31,18 @@
             text-decoration: underline;
         }
     </style>
-    <link rel="stylesheet" href="style.css">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="alert-box">
-        <h1 style="color: #d9534f;">Acesso Restrito</h1>
-        <p>Não tem permissão para aceder esta página.</p>
-        <p class="timer">Será redirecionado para a página inicial em 10 segundos. <br>Se não for, <a href="index.php">clique aqui</a>.</p>
+    <div class="access-denied">
+        <h1>Acesso Restrito</h1>
+        <p>Não tem permissão para aceder a esta página.</p>
+        <p class="timer">Será redirecionado para a página inicial em 5 segundos. <br>Se não for, <a href="index.php">clique aqui</a>.</p>
     </div>
 </body>
 </html>
 
 <?php
 // Redireciona automaticamente para 'index.php' após 5 segundos
-header("refresh:10;url=index.php");
+header("refresh:5;url=index.php");
 ?>
