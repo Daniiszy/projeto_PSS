@@ -147,64 +147,63 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
             </div>
         </div>
 
-        <div class="container" class="card-body table-responsive">
-            <div class="card">
-                <div class="card-header">
-                    <h5><strong>Tabela de Sensores</strong></h5>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Tipo de Dispositivos IoT</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Data de Atualização</th>
-                                <th scope="col">Estado Alertas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row"><?php echo $nome_temperatura; ?></td>
-                                <td><?php echo $valor_temperatura; ?></td>
-                                <td><?php echo $hora_temperatura; ?></td>
-                                <td><span class="badge rounded-pill text-bg-danger">Elevada</span></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Humidade</td>
-                                <td>70%</td>
-                                <td>2024/03/10 14:31</td>
-                                <td><span class="badge rounded-pill text-bg-primary">Normal</span></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Led Arduino</td>
-                                <td>Ligado</td>
-                                <td>2024/03/10 14:31</td>
-                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Led Arduino</td>
-                                <td>Ligado</td>
-                                <td>2024/03/10 14:31</td>
-                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Led Arduino</td>
-                                <td>Ligado</td>
-                                <td>2024/03/10 14:31</td>
-                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">Led Arduino</td>
-                                <td>Ligado</td>
-                                <td>2024/03/10 14:31</td>
-                                <td><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+        <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5><strong>Tabela de Sensores</strong></h5>
+            </div>
+            <div class="card-body table-responsive">
+                <table class="table table-striped table-hover" role="table">
+                    <thead>
+                        <tr role="row">
+                            <th scope="col">Tipo de Dispositivos IoT</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Data de Atualização</th>
+                            <th scope="col">Estado Alertas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr role="row">
+                            <td data-label="Tipo de Dispositivos IoT"><?php echo $nome_temperatura; ?></td>
+                            <td data-label="Valor"><?php echo $valor_temperatura; ?></td>
+                            <td data-label="Data de Atualização"><?php echo $hora_temperatura; ?></td>
+                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-danger">Elevada</span></td>
+                        </tr>
+                        <tr role="row">
+                            <td data-label="Tipo de Dispositivos IoT">Humidade</td>
+                            <td data-label="Valor">70%</td>
+                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-primary">Normal</span></td>
+                        </tr>
+                        <tr role="row">
+                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
+                            <td data-label="Valor">Ligado</td>
+                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                        </tr>
+                        <tr role="row">
+                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
+                            <td data-label="Valor">Ligado</td>
+                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                        </tr>
+                        <tr role="row">
+                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
+                            <td data-label="Valor">Ligado</td>
+                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                        </tr>
+                        <tr role="row">
+                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
+                            <td data-label="Valor">Ligado</td>
+                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
     </div>
     <footer class="footer bg-dark text-white py-4">
         <div class="container">
