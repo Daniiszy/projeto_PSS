@@ -77,7 +77,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         }
 
         input[type="text"], input[type="password"] {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
