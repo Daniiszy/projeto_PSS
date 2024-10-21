@@ -13,6 +13,10 @@ if (!isset($_SESSION['username'])) {
 $valor_temperatura = file_get_contents("api/files/temperatura/valor.txt");
 $hora_temperatura = file_get_contents("api/files/temperatura/hora.txt");
 $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
+
+$valor_humidade = file_get_contents("api/files/humidade/valor.txt");
+$hora_humidade = file_get_contents("api/files/temperatura/hora.txt");
+$nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
 ?>
 
 
@@ -78,7 +82,7 @@ $nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header sensor">
-                            <strong>Humidade 70%</strong>
+                            <strong>Humidade <?php echo $valor_humidade; ?></strong>
                         </div>
                         <div class="card-body">
                             <img src="imagens/humidity-high.png" alt="Imagem de temperatura alta">
