@@ -10,7 +10,7 @@ if (!isset($_SESSION['username'])) {
 
 // Lê os valores de sensores específicos (movimento e câmara)
 
-//Sensores
+// Sensores
 $valor_sensor_movimento = file_get_contents("api/files/movimento/valor.txt");
 $hora_sensor_movimento = file_get_contents("api/files/movimento/hora.txt");
 $nome_sensor_movimento = file_get_contents("api/files/movimento/nome.txt");
@@ -23,7 +23,7 @@ $valor_sensor_luminosidade = file_get_contents("api/files/luminosidade/valor.txt
 $hora_sensor_luminosidade = file_get_contents("api/files/luminosidade/hora.txt");
 $nome_sensor_luminosidade = file_get_contents("api/files/luminosidade/nome.txt");
 
-//Atuadores
+// Atuadores
 $valor_atuador_buzzer = file_get_contents("api/files/buzzer/valor.txt");
 $hora_atuador_buzzer = file_get_contents("api/files/buzzer/hora.txt");
 $nome_atuador_buzzer = file_get_contents("api/files/buzzer/nome.txt");
@@ -35,7 +35,6 @@ $nome_atuador_botao = file_get_contents("api/files/botao/nome.txt");
 $valor_atuador_led = file_get_contents("api/files/led/valor.txt");
 $hora_atuador_led = file_get_contents("api/files/led/hora.txt");
 $nome_atuador_led = file_get_contents("api/files/led/nome.txt");
-
 
 // Diretório onde estão armazenados os sensores
 $diretorioSensores = "api/files/";

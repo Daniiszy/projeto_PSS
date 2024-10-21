@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-//Sensores
+// Sensores
 $valor_sensor_movimento = file_get_contents("api/files/movimento/valor.txt");
 $hora_sensor_movimento = file_get_contents("api/files/movimento/hora.txt");
 $nome_sensor_movimento = file_get_contents("api/files/movimento/nome.txt");
@@ -22,7 +22,7 @@ $valor_sensor_luminosidade = file_get_contents("api/files/luminosidade/valor.txt
 $hora_sensor_luminosidade = file_get_contents("api/files/luminosidade/hora.txt");
 $nome_sensor_luminosidade = file_get_contents("api/files/luminosidade/nome.txt");
 
-//Atuadores
+// Atuadores
 $valor_atuador_buzzer = file_get_contents("api/files/buzzer/valor.txt");
 $hora_atuador_buzzer = file_get_contents("api/files/buzzer/hora.txt");
 $nome_atuador_buzzer = file_get_contents("api/files/buzzer/nome.txt");
@@ -180,62 +180,62 @@ $nome_atuador_led = file_get_contents("api/files/led/nome.txt");
         </div>
 
         <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h5><strong>Tabela de Sensores</strong></h5>
-            </div>
-            <div class="card-body table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Tipo de Dispositivos IoT</th>
-                            <th scope="col">Valor</th>
-                            <th scope="col">Data de Atualização</th>
-                            <th scope="col">Estado Alertas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_movimento); ?></td>
-                            <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_movimento); ?></td>
-                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_movimento); ?></td>
-                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-danger">Elevada</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_camara); ?></td>
-                            <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_camara); ?></td>
-                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_camara); ?></td>
-                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-primary">Normal</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_luminosidade); ?></td>
-                            <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_luminosidade); ?></td>
-                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_luminosidade); ?></td>
-                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_buzzer); ?></td>
-                            <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_buzzer); ?></td>
-                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_buzzer); ?></td>
-                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_botao); ?></td>
-                            <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_botao); ?></td>
-                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_botao); ?></td>
-                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_led); ?></td>
-                            <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_led); ?></td>
-                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_led); ?></td>
-                            <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="card">
+                <div class="card-header">
+                    <h5><strong>Tabela de Sensores</strong></h5>
+                </div>
+                <div class="card-body table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Tipo de Dispositivos IoT</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Data de Atualização</th>
+                                <th scope="col">Estado Alertas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_movimento); ?></td>
+                                <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_movimento); ?></td>
+                                <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_movimento); ?></td>
+                                <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-danger">Elevada</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_camara); ?></td>
+                                <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_camara); ?></td>
+                                <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_camara); ?></td>
+                                <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-primary">Normal</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_luminosidade); ?></td>
+                                <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_luminosidade); ?></td>
+                                <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_luminosidade); ?></td>
+                                <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_buzzer); ?></td>
+                                <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_buzzer); ?></td>
+                                <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_buzzer); ?></td>
+                                <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_botao); ?></td>
+                                <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_botao); ?></td>
+                                <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_botao); ?></td>
+                                <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_led); ?></td>
+                                <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_led); ?></td>
+                                <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_led); ?></td>
+                                <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     </div>
     <footer class="footer bg-dark text-white py-4">
         <div class="container">
