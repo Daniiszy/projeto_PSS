@@ -21,8 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Salva o valor do campo 'hora' em um arquivo hora.txt dentro de uma pasta com o nome do valor do campo 'nome'
         file_put_contents("files/".$_POST['nome']."/hora.txt", $_POST['hora']);
 
-        $logs_temp = trim($_POST['hora']) . ';' . trim($_POST['valor']) . PHP_EOL;
-
+        //$logs_temp = trim($_POST['hora']) . ';' . trim($_POST['valor']) . PHP_EOL;
+        $logs_temp = trim($_POST['nome']) . ';'. trim($_POST['hora']) . ';' . trim($_POST['valor']) . PHP_EOL;
+        
         file_put_contents("files/".$_POST['nome']."/log.txt", $logs_temp, FILE_APPEND);
 
     } else {

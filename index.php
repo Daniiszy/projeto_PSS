@@ -1,39 +1,32 @@
 <?php
 session_start();
 
-$username = "daniel"; 
-$username = "admin"; 
-$username = "miguel";
+function carregarUtilizadores($ficheiro) {
+    $utilizadores = [];
+    if (file_exists($ficheiro)) {
+        $linhas = file($ficheiro, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($linhas as $linha) {
+            list($username, $hash) = explode(',', trim($linha));
+            $utilizadores[$username] = $hash;
+        }
+    }
+    return $utilizadores;
+}
 
-$password_hash_daniel = '$2y$10$hU2F9ReDlYB2Kt5uaMhzVO8NQSmV0HrNVUgQcqPySrKMrWYqQm9Sm';
-$password_hash_admin = '$2y$10$U/PE9zgYIAZe8bQh9TNd5.jYc5e4u0gQ1xl4.7wNsCPXHUlMViOkS';
-$password_hash_miguel = '$2y$10$WLY2TyDlfNar8QONA3wrG.nbMdru4a19m7RXUAvNqwyo3C3rtzWYi';
+$utilizadores = carregarUtilizadores('users.txt');
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Verificação de autenticação
-    if ($username === "admin" && password_verify($password, $password_hash_admin)) {
-        $_SESSION['username'] = $username; // Armazena o username na sessão
-        header("Location: dashboard.php"); // Redireciona para o dashboard
-        exit(); // Saia após o redirecionamento
-    } 
-    if ($username === "daniel" && password_verify($password, $password_hash_daniel)) {
-        $_SESSION['username'] = $username; // Armazena o username na sessão
-        header("Location: dashboard.php"); // Redireciona para o dashboard
-        exit(); // Saia após o redirecionamento
-    } 
-    if ($username === "miguel" && password_verify($password, $password_hash_miguel)) {
-        $_SESSION['username'] = $username; // Armazena o username na sessão
-        header("Location: dashboard.php"); // Redireciona para o dashboard
-        exit(); // Saia após o redirecionamento
-    } 
-    
-    // Se nenhuma das condições acima for verdadeira, exibe uma mensagem de erro
-    $error_message = "Autenticação falhou! Username ou senha incorretos.";
-}
+    if (array_key_exists($username, $utilizadores) && password_verify($password, $utilizadores[$username])) {
+        $_SESSION['username'] = $username;
+        header("Location: dashboard.php");
+        exit();
+    }
 
+    $error_message = "Autenticação falhou! Username ou palavra-passe incorretos.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,9 +61,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         }
 
         .error {
-            background-color: #f8d7da; /* Cor de fundo para a mensagem de erro */
-            color: #721c24; /* Cor do texto */
-            border: 1px solid #f5c6cb; /* Borda vermelha */
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
@@ -95,13 +88,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         }
 
         input[type="submit"]:hover {
-            background-color: #357ae8; /* Escurece a cor ao passar o mouse */
+            background-color: #357ae8;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Aqui você pode colocar o caminho da sua imagem -->
         <img src="estg_h.png" alt="Logo">
 
         <h2>Login</h2>
@@ -109,7 +101,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             <div class="error"><?php echo $error_message; ?></div>
         <?php endif; ?>
 
-        <form method="POST" action="">
+        <form method="POST" action="index.php">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Senha" required>
             <input type="submit" value="Entrar">

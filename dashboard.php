@@ -4,21 +4,37 @@ session_start();
 
 // Verifica se o utilizador já está autenticado, verificando a variável de sessão 'username'
 if (!isset($_SESSION['username'])) {
-
     // Se 'username' não está definido na sessão, redireciona o usuário para a página de acesso restrito
     header("Location: acesso_restrito.php");
     exit();
 }
 
-$valor_temperatura = file_get_contents("api/files/temperatura/valor.txt");
-$hora_temperatura = file_get_contents("api/files/temperatura/hora.txt");
-$nome_temperatura = file_get_contents("api/files/temperatura/nome.txt");
+//Sensores
+$valor_sensor_movimento = file_get_contents("api/files/movimento/valor.txt");
+$hora_sensor_movimento = file_get_contents("api/files/movimento/hora.txt");
+$nome_sensor_movimento = file_get_contents("api/files/movimento/nome.txt");
 
-$valor_humidade = file_get_contents("api/files/humidade/valor.txt");
-$hora_humidade = file_get_contents("api/files/temperatura/hora.txt");
-$nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
+$valor_sensor_camara = file_get_contents("api/files/camara/valor.txt");
+$hora_sensor_camara = file_get_contents("api/files/camara/hora.txt");
+$nome_sensor_camara = file_get_contents("api/files/camara/nome.txt");
+
+$valor_sensor_luminosidade = file_get_contents("api/files/luminosidade/valor.txt");
+$hora_sensor_luminosidade = file_get_contents("api/files/luminosidade/hora.txt");
+$nome_sensor_luminosidade = file_get_contents("api/files/luminosidade/nome.txt");
+
+//Atuadores
+$valor_atuador_buzzer = file_get_contents("api/files/buzzer/valor.txt");
+$hora_atuador_buzzer = file_get_contents("api/files/buzzer/hora.txt");
+$nome_atuador_buzzer = file_get_contents("api/files/buzzer/nome.txt");
+
+$valor_atuador_botao = file_get_contents("api/files/botao/valor.txt");
+$hora_atuador_botao = file_get_contents("api/files/botao/hora.txt");
+$nome_atuador_botao = file_get_contents("api/files/botao/nome.txt");
+
+$valor_atuador_led = file_get_contents("api/files/led/valor.txt");
+$hora_atuador_led = file_get_contents("api/files/led/hora.txt");
+$nome_atuador_led = file_get_contents("api/files/led/nome.txt");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -68,13 +84,15 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header sensor">
-                            <strong>Temperatura: <?php echo $valor_temperatura; ?>º</strong>
+                            <strong>Sensor de movimento: <?php echo htmlspecialchars($valor_sensor_movimento); ?></strong>
                         </div>
                         <div class="card-body">
-                            <img src="imagens/temperature-high.png" alt="Imagem de temperatura alta">
+                            <img src="imagens/motion_sensor.png" alt="Imagem de sensor de movimento">
                         </div>
                         <div class="card-footer">
-                            <h5><strong>Atualização:</strong> <?php echo $hora_temperatura; ?> - <a href="historico_temperatura.php">Histórico</a></h5>
+                            <h5><strong>Atualização:</strong> <?php echo htmlspecialchars($hora_sensor_movimento); ?> - 
+                            <a href="historico_sensor.php?nome=<?php echo htmlspecialchars($nome_sensor_movimento); ?>">Histórico</a>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -82,13 +100,15 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header sensor">
-                            <strong>Humidade <?php echo $valor_humidade; ?></strong>
+                            <strong>Camara: <?php echo htmlspecialchars($valor_sensor_camara); ?></strong>
                         </div>
                         <div class="card-body">
-                            <img src="imagens/humidity-high.png" alt="Imagem de temperatura alta">
+                            <img src="imagens/camera.png" alt="Imagem de camara">
                         </div>
                         <div class="card-footer">
-                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                            <h5><strong>Atualização:</strong> <?php echo htmlspecialchars($hora_sensor_camara); ?> - 
+                            <a href="historico_sensor.php?nome=<?php echo htmlspecialchars($nome_sensor_camara); ?>">Histórico</a>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -96,13 +116,15 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header sensor">
-                            <strong>Humidade 70%</strong>
+                            <strong>Sensor de luminosidade: <?php echo htmlspecialchars($valor_sensor_luminosidade); ?></strong>
                         </div>
                         <div class="card-body">
-                            <img src="imagens/humidity-high.png" alt="Imagem de temperatura alta">
+                            <img src="imagens/brightness_12373383.png" alt="Imagem de sensor de movimento">
                         </div>
                         <div class="card-footer">
-                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                            <h5><strong>Atualização:</strong> <?php echo htmlspecialchars($hora_sensor_luminosidade); ?> - 
+                            <a href="historico_sensor.php?nome=<?php echo htmlspecialchars($nome_sensor_luminosidade); ?>">Histórico</a>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -110,13 +132,15 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header atuador">
-                            <strong>Led Arduino: Ligado</strong>
+                            <strong>Buzzer: <?php echo htmlspecialchars($valor_atuador_buzzer); ?></strong>
                         </div>
                         <div class="card-body">
-                            <img src="imagens/light-on.png" alt="Imagem de temperatura alta">
+                            <img src="imagens/buzzer.png" alt="Imagem do buzzer">
                         </div>
                         <div class="card-footer">
-                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                            <h5><strong>Atualização:</strong> <?php echo htmlspecialchars($hora_atuador_buzzer); ?> - 
+                            <a href="historico_sensor.php?nome=<?php echo htmlspecialchars($nome_atuador_buzzer); ?>">Histórico</a>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -124,13 +148,15 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header atuador">
-                            <strong>Led Arduino: Ligado</strong>
+                            <strong>Botão: <?php echo htmlspecialchars($valor_atuador_botao); ?> </strong>
                         </div>
                         <div class="card-body">
-                            <img src="imagens/light-on.png" alt="Imagem de temperatura alta">
+                            <img src="imagens/button.png" alt="Imagem do botão">
                         </div>
                         <div class="card-footer">
-                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                            <h5><strong>Atualização:</strong> <?php echo htmlspecialchars($hora_atuador_botao); ?> - 
+                            <a href="historico_sensor.php?nome=<?php echo htmlspecialchars($nome_atuador_botao); ?>">Histórico</a>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -138,13 +164,15 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                 <div class="col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header atuador">
-                            <strong>Led Arduino: Ligado</strong>
+                            <strong>Led: <?php echo htmlspecialchars($valor_atuador_led); ?> </strong>
                         </div>
                         <div class="card-body">
-                            <img src="imagens/light-on.png" alt="Imagem de temperatura alta">
+                            <img src="imagens/light-on.png" alt="Imagem da led">
                         </div>
                         <div class="card-footer">
-                            <h5><strong>Atualização:</strong> 2024/03/10 14:31 - <a href="#">Histórico</a></h5>
+                            <h5><strong>Atualização:</strong> <?php echo htmlspecialchars($hora_atuador_led); ?> - 
+                            <a href="historico_sensor.php?nome=<?php echo htmlspecialchars($nome_atuador_led); ?>">Histórico</a>
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -157,9 +185,9 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                 <h5><strong>Tabela de Sensores</strong></h5>
             </div>
             <div class="card-body table-responsive">
-                <table class="table table-striped table-hover" role="table">
+                <table class="table table-striped table-hover">
                     <thead>
-                        <tr role="row">
+                        <tr>
                             <th scope="col">Tipo de Dispositivos IoT</th>
                             <th scope="col">Valor</th>
                             <th scope="col">Data de Atualização</th>
@@ -167,40 +195,40 @@ $nome_humidade = file_get_contents("api/files/temperatura/nome.txt");
                         </tr>
                     </thead>
                     <tbody>
-                        <tr role="row">
-                            <td data-label="Tipo de Dispositivos IoT"><?php echo $nome_temperatura; ?></td>
-                            <td data-label="Valor"><?php echo $valor_temperatura; ?></td>
-                            <td data-label="Data de Atualização"><?php echo $hora_temperatura; ?></td>
+                        <tr>
+                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_movimento); ?></td>
+                            <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_movimento); ?></td>
+                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_movimento); ?></td>
                             <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-danger">Elevada</span></td>
                         </tr>
-                        <tr role="row">
-                            <td data-label="Tipo de Dispositivos IoT">Humidade</td>
-                            <td data-label="Valor">70%</td>
-                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                        <tr>
+                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_camara); ?></td>
+                            <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_camara); ?></td>
+                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_camara); ?></td>
                             <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-primary">Normal</span></td>
                         </tr>
-                        <tr role="row">
-                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
-                            <td data-label="Valor">Ligado</td>
-                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                        <tr>
+                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_sensor_luminosidade); ?></td>
+                            <td data-label="Valor"><?php echo htmlspecialchars($valor_sensor_luminosidade); ?></td>
+                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_sensor_luminosidade); ?></td>
                             <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
                         </tr>
-                        <tr role="row">
-                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
-                            <td data-label="Valor">Ligado</td>
-                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                        <tr>
+                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_buzzer); ?></td>
+                            <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_buzzer); ?></td>
+                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_buzzer); ?></td>
                             <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
                         </tr>
-                        <tr role="row">
-                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
-                            <td data-label="Valor">Ligado</td>
-                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                        <tr>
+                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_botao); ?></td>
+                            <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_botao); ?></td>
+                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_botao); ?></td>
                             <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
                         </tr>
-                        <tr role="row">
-                            <td data-label="Tipo de Dispositivos IoT">Led Arduino</td>
-                            <td data-label="Valor">Ligado</td>
-                            <td data-label="Data de Atualização">2024/03/10 14:31</td>
+                        <tr>
+                            <td data-label="Tipo de Dispositivos IoT"><?php echo htmlspecialchars($nome_atuador_led); ?></td>
+                            <td data-label="Valor"><?php echo htmlspecialchars($valor_atuador_led); ?></td>
+                            <td data-label="Data de Atualização"><?php echo htmlspecialchars($hora_atuador_led); ?></td>
                             <td data-label="Estado Alertas"><span class="badge rounded-pill text-bg-success">Ativo</span></td>
                         </tr>
                     </tbody>
